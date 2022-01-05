@@ -6,44 +6,7 @@ from .forms import ProjectForm
 
 # Create your views here.
 
-""""
-projectsList = [
 
-    {
-        'id': '1',
-        'title': 'Ecommerce website',
-        'description': 'Fully functional ecommerce website',
-    },
-    {
-        'id': '2',
-        'title': 'Portfolio website',
-        'description': 'This was a project where i built out my portfolio',
-    },
-    {
-        'id': '3',
-        'title': 'Social Network',
-        'description': 'Awesomely source project i am still working on',
-    }
-
-]
-
-
-
-def projects(request):
-    pages = "Projects"
-    number = 10
-    contex = {'pages': pages, 'number': number, 'projects': projectsList}
-    return render(request, 'projects/projects.html', contex)
-
-
-def project(request, pk):
-    projectObj = None
-    for i in projectsList:
-        if i['id'] == pk:
-            projectObj = i
-    return render(request, 'projects/singel-project.html', {'project': projectObj})
-
-"""
 
 
 def projects(request):
