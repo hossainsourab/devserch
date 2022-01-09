@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 
 # @receiver(post_save, sender=Profile)
 def createProfile(sender, instance, created, **kwargs):
-    print("Create method triger up")
     if created:
         user = instance
         profile = Profile.objects.create(
@@ -17,10 +16,21 @@ def createProfile(sender, instance, created, **kwargs):
         )
 
 
+def updaateProfile(sender, instance, created, **kwargs):
+    profile = instance
+    user = profile.user
+    if created == False:
+        user.first_name = profile.name
+        user.username = profile.username
+        user.email = profile.email
+        user.save()
+
+
 def profileDelete(sender, instance, **kwargs):
     user = instance.user
     user.delete()
 
 
 post_save.connect(createProfile, sender=User)
+post_save.connect(updaateProfile, sender=Profile)
 post_delete.connect(profileDelete, sender=Profile)

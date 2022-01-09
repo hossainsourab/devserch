@@ -30,7 +30,7 @@ def createProject(request):
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('account')
 
     contex = {'form': form}
     return render(request, 'projects/project_form.html', contex)
@@ -45,7 +45,7 @@ def updateProject(request, pk):
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('account')
 
     contex = {'form': form}
     return render(request, 'projects/project_form.html', contex)
@@ -58,4 +58,4 @@ def deleteProject(request, pk):
         project.delete()
         return redirect('/')
     context = {'object': project}
-    return render(request, 'projects/delete_template.html', context)
+    return render(request, 'delete_template.html', context)
